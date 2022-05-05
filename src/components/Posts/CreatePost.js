@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-import "./CreatePost.css";
+import Card from "../UI/Card";
+import Button from "../UI/Button";
+
+import classes from  "./CreatePost.module.css";
 
 const CreatePost = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -23,30 +26,23 @@ const CreatePost = (props) => {
   }
 
   return (
-    <div>
+    <Card className={classes.input}>
       <form onSubmit={createPostHandler}>
-        <div className="new-expense__controls">
-          <div className="new-expense__control">
-            <label>Title</label>
-            <input type="text" value={enteredTitle} onChange={titleChageHandler}/>
-          </div>
-          <div className="new-expense__control">
+
+            <label htmlFor="title">Title</label>
+            <input id="title" type="text" value={enteredTitle} onChange={titleChageHandler}/>
             <label>Text</label>
             <input type="text" value={enteredText} onChange={textChageHandler}/>
-          </div>
-          <div className="new-expense__control">
             <label>Date</label>
             <input type="date" min="2019-01-01" max="2052-12-31" />
-          </div>
-        </div>
         <div className="new-expense__actions">
-          <button type="button" onClick={props.onCancel}>
+          <Button type="button" onClick={props.onCancel}>
             Cancel
-          </button>
-          <button type="submit">Add Expense</button>
+          </Button>
+          <Button type="submit">Add Expense</Button>
         </div>
       </form>
-    </div>
+    </Card>
   );
 };
 
